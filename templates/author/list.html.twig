@@ -1,0 +1,16 @@
+<h1>Authors </h1>
+{% if Authors is empty %}
+  <p> il est vide </p>
+{% else %}  
+ <ul>
+  {% for author in Authors %}
+   
+   <li> 
+    <a href="{{ path('author_details',{'id': author.id}) }}">Details</a>
+    {{author.username|upper}} 
+   </li>
+  {% endfor %}
+ </ul> 
+ <p> le nombre est : {{ Authors|length }} </p>
+ <p> {{Authors|reduce((carry,author) => carry + author.nb_books, 0) }}</p>
+{% endif %}
